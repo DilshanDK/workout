@@ -57,12 +57,14 @@ class _CategoriesInfoState extends State<CategoriesInfo> {
                 height: 15,
               ),
               GridView.builder(
+              
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
+                  childAspectRatio: 9/9.5,
                 ),
                 itemCount: widget.exerciseList.length,
                 itemBuilder: (context, index) {
@@ -70,7 +72,7 @@ class _CategoriesInfoState extends State<CategoriesInfo> {
                   return MainCategories(
                       title: exercise.exerciseName,
                       dec: "${exercise.noOfMinuites.toString()} of Workouts",
-                      imgName: exercise.exerciseImageUrl);
+                      imgUrl: exercise.exerciseImageUrl);
                 },
               )
             ],

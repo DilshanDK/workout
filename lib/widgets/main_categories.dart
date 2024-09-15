@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:myapp/util/colors.dart';
 
 class MainCategories extends StatelessWidget {
-  const MainCategories({super.key, required this.title, required this.imgName, required this.dec});
+  const MainCategories({super.key, required this.title, required this.imgUrl, required this.dec});
 
   final String title;
   final String dec;
-  final String imgName;
+  final String imgUrl;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,14 +29,14 @@ class MainCategories extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                  fontSize: 19,
+                  fontSize: 17,
                   color: kMainBlackColor,
                   fontWeight: FontWeight.w600),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
-                "assets/images/exercises/$imgName.png",
+                imgUrl,
                 width: 100,
                 fit: BoxFit.cover,
               ),

@@ -22,8 +22,8 @@ class _HomePageState extends State<HomePage> {
   String formattedDate = DateFormat('EEEE, MMM').format(DateTime.now());
   String formattedDay = DateFormat('dd').format(DateTime.now());
 
-   final exerciseData =  ExerciseData();
-   final equipmentData = EquipmentData();
+  final exerciseData = ExerciseData();
+  final equipmentData = EquipmentData();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  CategoriesInfo(
+                          builder: (context) => CategoriesInfo(
                             title: "Warmups",
                             exerciseList: exerciseData.exerciseList,
                             dec:
@@ -77,14 +77,16 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     child: const MainCategories(
-                        title: "Warmup", dec: "See More...", imgName: "cobra"),
+                        title: "Warmup",
+                        dec: "See More...",
+                        imgUrl: "assets/images/exercises/cobra.png"),
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  CategoriesInfo(
+                          builder: (context) => CategoriesInfo(
                             title: 'Equipment',
                             dec:
                                 "Welcome to our travel app, your ultimate guide to discovering captivating destinations around the globe! Whether you're seeking the tranquility visit offers something for every traveler.",
@@ -97,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                     child: const MainCategories(
                         title: "Equipment",
                         dec: "See More...",
-                        imgName: "dumbbells2"),
+                        imgUrl: "assets/images/equipments/dumbbells2.png"),
                   ),
                 ],
               ),
@@ -123,9 +125,10 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     child: const MainCategories(
-                        title: "Exercise",
-                        dec: "See More...",
-                        imgName: "dragging"),
+                      title: "Exercise",
+                      dec: "See More...",
+                      imgUrl: 'assets/images/exercises/dragging.png',
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -145,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                     child: const MainCategories(
                         title: "Stretching",
                         dec: "See More...",
-                        imgName: "yoga"),
+                        imgUrl: "assets/images/exercises/yoga.png"),
                   ),
                 ],
               ),
