@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myapp/data/equipment_data.dart';
 import 'package:myapp/data/exercise_data.dart';
 import 'package:myapp/data/user_data.dart';
 import 'package:myapp/pagers/categories_info.dart';
+import 'package:myapp/pagers/equipment_page.dart';
 import 'package:myapp/util/colors.dart';
 import 'package:myapp/widgets/main_categories.dart';
 import 'package:myapp/widgets/progress_card.dart';
@@ -86,13 +89,13 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CategoriesInfo(
-                            title: 'Equipment',
-                            dec:
-                                "Welcome to our travel app, your ultimate guide to discovering captivating destinations around the globe! Whether you're seeking the tranquility visit offers something for every traveler.",
-                            exerciseList: exerciseData.exerciseList,
-                            showEquipment: false,
-                          ),
+                          builder: (context) => EquipmentPage(
+                              title: "Equipments",
+                              dec: "Welcome to our travel app, your ultimate guide to discovering captivating destinations around the globe! Whether you're seeking the tranquility visit offers something for every traveler.",
+                              equipmentList: equipmentData.equipmentList,
+                              imgUrl: "imgUrl",
+                              noOfMinuites: 5,
+                              noOfCaloriesBurned: 9),
                         ),
                       );
                     },
@@ -114,11 +117,11 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CategoriesInfo(
+                          builder: (context) =>  CategoriesInfo(
                             title: 'Exercises',
                             dec:
                                 "Welcome to our travel app, your ultimate guide to discovering captivating destinations around the globe! Whether you're seeking the tranquility visit offers something for every traveler.",
-                            exerciseList: [],
+                            exerciseList: exerciseData.exerciseList,
                             showEquipment: false,
                           ),
                         ),
@@ -135,11 +138,11 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CategoriesInfo(
+                          builder: (context) =>  CategoriesInfo(
                             title: 'Stretching',
                             dec:
                                 "Welcome to our travel app, your ultimate guide to discovering captivating destinations around the globe! Whether you're seeking the tranquility visit offers something for every traveler.",
-                            exerciseList: [],
+                            exerciseList: exerciseData.exerciseList,
                             showEquipment: false,
                           ),
                         ),

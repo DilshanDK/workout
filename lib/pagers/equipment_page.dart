@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:myapp/models/exercise_model.dart';
+import 'package:myapp/models/equipment_model.dart';
 import 'package:myapp/util/colors.dart';
-import 'package:myapp/widgets/main_categories.dart';
+import 'package:myapp/widgets/equipment_details_card.dart';
 
-class CategoriesInfo extends StatefulWidget {
-  const CategoriesInfo({
+class EquipmentPage extends StatefulWidget {
+  const EquipmentPage({
     super.key,
     required this.title,
     required this.dec,
-    required this.exerciseList,
-    required this.showEquipment,
+    required this.equipmentList,
+    required this.imgUrl,
+    required this.noOfMinuites,
+    required this.noOfCaloriesBurned,
   });
 
   final String title;
   final String dec;
-  final List<Exercise> exerciseList;
-  final bool showEquipment;
+  final String imgUrl;
+  final int noOfMinuites;
+  final int noOfCaloriesBurned;
+
+  final List<Equipment> equipmentList;
+
 
   @override
-  State<CategoriesInfo> createState() => _CategoriesInfoState();
+  State<EquipmentPage> createState() => _EquipmentPageState();
 }
 
-class _CategoriesInfoState extends State<CategoriesInfo> {
+class _EquipmentPageState extends State<EquipmentPage> {
   String formattedDate = DateFormat('EEEE, MMM').format(DateTime.now());
   String formattedDay = DateFormat('dd').format(DateTime.now());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,35 +49,33 @@ class _CategoriesInfoState extends State<CategoriesInfo> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:  const EdgeInsets.all(15.0),
           child: Column(
             children: [
               Text(
                 widget.dec,
                 style: const TextStyle(color: kSubtitleColor),
               ),
-              const SizedBox(
-                height: 15,
-              ),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 1,
                   crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
-                  childAspectRatio: 9 / 9.5,
+                  childAspectRatio: 16/10,
                 ),
-                itemCount: widget.exerciseList.length,
+                itemCount: widget.equipmentList.length,
                 itemBuilder: (context, index) {
-                  Exercise exercise = widget.exerciseList[index];
-                  return 
-                  MainCategories(
-                      title: exercise.exerciseName,
-                      dec: "${exercise.noOfMinuites.toString()} of Workouts",
-                      imgUrl: exercise.exerciseImageUrl);
+                  Equipment equipment = widget.equipmentList[index];
+                  return  EquipmentDetailsCard(
+                    title: equipment.equipmentName,
+                    dec: equipment.equipmentDescription,
+                    imgUrl: equipment.equipmentImageUrl,
+                    noOfMin: equipment.noOfMinuites,
+                    noOfCalories: equipment.noOfCalories,
+                  );
                 },
               )
             ],
