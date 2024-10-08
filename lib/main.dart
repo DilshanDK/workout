@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const AddPage(),
+    const AddPage(exerciseList: [],),
     const FavoritePage(),
     const ProfilePage(),
   ];
